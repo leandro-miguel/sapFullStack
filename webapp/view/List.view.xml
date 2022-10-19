@@ -1,7 +1,68 @@
-<mvc:View controllerName="project1fullstack.controller.List"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View 
+    controllerName="project1fullstack.controller.List"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <Table id="_IDTable" items="{path: 'oModelList>/rows', sorter: { path: 'TravelID'}}" busy="{oModelList>/busyList}">
+                <columns>
+                    <Column id="_IDColumnsId">
+                        <Label id="_IDLabelID" text="{i18n>TravelID}"/>
+                    </Column>
+                    <Column id="_IDColumnsAgencyID">
+                        <Label id="_IDLabelAgencyID" text="{i18n>AgencyID}"/>
+                    </Column>
+                    <Column id="_IDColumnsAgencyName">
+                        <Label id="_IDLabelAgencyName" text="{i18n>AgencyName}"/>
+                    </Column>
+                    <Column id="_IDColumnsCustomerID">
+                        <Label id="_IDLabelCustomerID" text="{i18n>CustomerID}"/>
+                    </Column>
+                    <Column id="_IDColumnsCustomerName">
+                        <Label id="_IDLabelCustomerName" text="{i18n>CustomerName}"/>
+                    </Column>
+                    <Column id="_IDColumnsBeginDate">
+                        <Label id="_IDLabelBeginDate" text="{i18n>BeginDate}"/>
+                    </Column>
+                    <Column id="_IDColumnsEndDate">
+                        <Label id="_IDLabelEndDate" text="{i18n>EndDate}"/>
+                    </Column>
+                    <Column id="_IDColumnsTotalPrice">
+                        <Label id="_IDLabelTotalPrice" text="{i18n>TotalPrice}"/>
+                    </Column>
+                    <Column id="_IDColumnsCurrencyCode">
+                        <Label id="_IDLabelCurrencyCode" text="{i18n>CurrencyCode}"/>
+                    </Column>
+                    <Column id="_IDColumnsTravelStatus">
+                        <Label id="_IDLabelTravelStatus" text="{i18n>TravelStatus}"/>
+                    </Column>
+                    <Column id="_IDColumnsDescription" width="auto">
+                        <Label id="_IDLabelDescription" text="{i18n>Description}"/>
+                    </Column>
+                    <Column id="_IDColumnsLastChangedAt">
+                        <Label id="_IDLabelLastChangedAt" text="{i18n>LastChangedAt}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDListItem">
+                        <cells>
+                            <Text id="_IDTravelID" text="{oModelList>TravelID}"/>
+                            <Text id="_IDAgencyID" text="{oModelList>AgencyID}"/>
+                            <Text id="_IDAgencyName" text="{oModelList>AgencyName}"/>
+                            <Text id="_IDCustomerID" text="{oModelList>CustomerID}"/>
+                            <Text id="_IDCustomerName" text="{oModelList>CustomerName}"/>
+                            <Text id="_IDCBeginDate" text="{path: 'oModelList>BeginDate',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
+                            <Text id="_IDCEndDate" text="{path: 'oModelList>EndDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
+                            <Text id="_IDCTotalPrice" text="{oModelList>TotalPrice}"/>
+                            <Text id="_IDCCurrencyCode" text="{oModelList>CurrencyCode}"/>
+                            <Text id="_IDCTravelStatus" text="{oModelList>TravelStatus}"/>
+                            <Text id="_IDCDescription" text="{oModelList>Description}" wrapping="false" width="auto"/>
+                            <Text id="_IDCLastChangedAt" text="{path: 'oModelList>LastChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
     </Page>
 </mvc:View>

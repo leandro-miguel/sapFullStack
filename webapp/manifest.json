@@ -84,11 +84,20 @@
                     "bundleName": "project1fullstack.i18n.i18n"
                 }
             },
-            "": {
+            "oModelMainService": {
                 "dataSource": "mainService",
                 "preload": true,
                 "settings": {}
-            }
+            },
+            "oModelList": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "oModelCreate": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "oUserModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            }  
         },
         "resources": {
             "css": [
