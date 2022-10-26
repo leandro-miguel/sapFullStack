@@ -11,7 +11,7 @@ sap.ui.define(
             constructor: function () {
                 //
             },
-
+            //teste
             async calloDataGetFunction(empresa) {
                 const oGlobalModel = GlobalModel.getInstance();
                 const oDataModel = oGlobalModel.getoModelMainService();
