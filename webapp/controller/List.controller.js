@@ -1,7 +1,9 @@
 sap.ui.define([
     "./BaseController",
     "../model/ListModel",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -15,13 +17,15 @@ sap.ui.define([
                 oRouter.getRoute("RouteList").attachPatternMatched(this._onSearch, this);
             },
 
-            async _onSearch(){
+            async _onSearch(oEvent){
+                debugger
                 const oModel = this.getModel("oModelList");
                 oModel.setProperty("/busyList", true);
+                const oSearchFilterValue = oEvent.getParameters().newValue;
                 const oListModel = new ListModel();
                 try{
                     debugger
-                    const fnPromise = await oListModel.calloDataGetFunction();
+                    const fnPromise = await oListModel.calloDataGetFunction(oSearchFilterValue);
                     if(fnPromise.response.statusCode == 200){
                         oModel.setProperty("/busyList", false);
                         oModel.setProperty("/rows", fnPromise.oData.results);
@@ -30,6 +34,6 @@ sap.ui.define([
                 }catch(e){
                     MessageBox.error(e.message);
                 }
-            }
+            },
         });
     });

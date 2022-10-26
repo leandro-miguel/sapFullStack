@@ -1,11 +1,43 @@
-<mvc:View 
-    controllerName="project1fullstack.controller.List"
-    xmlns:mvc="sap.ui.core.mvc" 
-    displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content>
-            <Table id="_IDTable" items="{path: 'oModelList>/rows', sorter: { path: 'TravelID'}}" busy="{oModelList>/busyList}">
+<mvc:View
+		controllerName="project1fullstack.controller.List" 
+		height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:svm="sap.ui.comp.smartvariants">
+		<f:DynamicPage id="_IDGenDynamicPage1" headerExpanded="{/headerExpanded}">
+			<f:title>
+				<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+					<f:heading>
+						<svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
+					</f:heading>
+					<f:expandedContent>
+						<Label id="expandedLabel" text="No filters active" />
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label id="snappedLabel" text="No filters active" />
+					</f:snappedContent>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader id="_IDGenDynamicPageHeader1">
+					<f:content>
+						<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="._onSearch" showGoOnFB="false" showFilterConfiguration="false">
+							<fb:filterItems> 
+								<fb:FilterItem id="_IDGenFilterItem1" name="Name" label="{i18n>Search}">
+									<fb:control>
+										<SearchField id="_IDOnSearch" liveChange="._onSearch" value="{oModelList>/SearchValue}"/>
+									</fb:control>
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<Table id="_IDTable" items="{path: 'oModelList>/rows', sorter: { path: 'TravelID'}}" busy="{oModelList>/busyList}">
                 <columns>
                     <Column id="_IDColumnsId">
                         <Label id="_IDLabelID" text="{i18n>TravelID}"/>
@@ -63,6 +95,6 @@
                     </ColumnListItem>
                 </items>
             </Table>
-        </content>
-    </Page>
+			</f:content>
+		</f:DynamicPage>
 </mvc:View>
