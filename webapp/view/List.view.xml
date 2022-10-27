@@ -3,22 +3,15 @@
 		height="100%"
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns:core="sap.ui.core"
-		xmlns="sap.m"
+		xmlns:m="sap.m"
+        xmlns="sap.ui.table"
 		xmlns:f="sap.f"
 		xmlns:fb="sap.ui.comp.filterbar"
 		xmlns:svm="sap.ui.comp.smartvariants">
 		<f:DynamicPage id="_IDGenDynamicPage1" headerExpanded="{/headerExpanded}">
 			<f:title>
 				<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
-					<f:heading>
-						<svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
-					</f:heading>
-					<f:expandedContent>
-						<Label id="expandedLabel" text="No filters active" />
-					</f:expandedContent>
-					<f:snappedContent>
-						<Label id="snappedLabel" text="No filters active" />
-					</f:snappedContent>
+					
 				</f:DynamicPageTitle>
 			</f:title>
 			<f:header>
@@ -28,7 +21,7 @@
 							<fb:filterItems> 
 								<fb:FilterItem id="_IDGenFilterItem1" name="Name" label="{i18n>Search}">
 									<fb:control>
-										<SearchField id="_IDOnSearch" liveChange="._onSearch" value="{oModelList>/SearchValue}"/>
+										<m:SearchField id="_IDOnSearch" liveChange="._onSearch" value="{oModelList>/SearchValue}"/>
 									</fb:control>
 								</fb:FilterItem>
 							</fb:filterItems>
@@ -37,64 +30,99 @@
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<Table id="_IDTable" items="{path: 'oModelList>/rows', sorter: { path: 'TravelID'}}" busy="{oModelList>/busyList}">
-                <columns>
-                    <Column id="_IDColumnsId">
-                        <Label id="_IDLabelID" text="{i18n>TravelID}"/>
-                    </Column>
-                    <Column id="_IDColumnsAgencyID">
-                        <Label id="_IDLabelAgencyID" text="{i18n>AgencyID}"/>
-                    </Column>
-                    <Column id="_IDColumnsAgencyName">
-                        <Label id="_IDLabelAgencyName" text="{i18n>AgencyName}"/>
-                    </Column>
-                    <Column id="_IDColumnsCustomerID">
-                        <Label id="_IDLabelCustomerID" text="{i18n>CustomerID}"/>
-                    </Column>
-                    <Column id="_IDColumnsCustomerName">
-                        <Label id="_IDLabelCustomerName" text="{i18n>CustomerName}"/>
-                    </Column>
-                    <Column id="_IDColumnsBeginDate">
-                        <Label id="_IDLabelBeginDate" text="{i18n>BeginDate}"/>
-                    </Column>
-                    <Column id="_IDColumnsEndDate">
-                        <Label id="_IDLabelEndDate" text="{i18n>EndDate}"/>
-                    </Column>
-                    <Column id="_IDColumnsTotalPrice">
-                        <Label id="_IDLabelTotalPrice" text="{i18n>TotalPrice}"/>
-                    </Column>
-                    <Column id="_IDColumnsCurrencyCode">
-                        <Label id="_IDLabelCurrencyCode" text="{i18n>CurrencyCode}"/>
-                    </Column>
-                    <Column id="_IDColumnsTravelStatus">
-                        <Label id="_IDLabelTravelStatus" text="{i18n>TravelStatus}"/>
-                    </Column>
-                    <Column id="_IDColumnsDescription" width="auto">
-                        <Label id="_IDLabelDescription" text="{i18n>Description}"/>
-                    </Column>
-                    <Column id="_IDColumnsLastChangedAt">
-                        <Label id="_IDLabelLastChangedAt" text="{i18n>LastChangedAt}"/>
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem id="_IDListItem">
-                        <cells>
-                            <Text id="_IDTravelID" text="{oModelList>TravelID}"/>
-                            <Text id="_IDAgencyID" text="{oModelList>AgencyID}"/>
-                            <Text id="_IDAgencyName" text="{oModelList>AgencyName}"/>
-                            <Text id="_IDCustomerID" text="{oModelList>CustomerID}"/>
-                            <Text id="_IDCustomerName" text="{oModelList>CustomerName}"/>
-                            <Text id="_IDCBeginDate" text="{path: 'oModelList>BeginDate',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
-                            <Text id="_IDCEndDate" text="{path: 'oModelList>EndDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
-                            <Text id="_IDCTotalPrice" text="{oModelList>TotalPrice}"/>
-                            <Text id="_IDCCurrencyCode" text="{oModelList>CurrencyCode}"/>
-                            <Text id="_IDCTravelStatus" text="{oModelList>TravelStatus}"/>
-                            <Text id="_IDCDescription" text="{oModelList>Description}" wrapping="false" width="auto"/>
-                            <Text id="_IDCLastChangedAt" text="{path: 'oModelList>LastChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true }}"/>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
+				<Table id="_IDGenTable1"
+				rows="{path: 'oModelList>/rows'}"
+				selectionMode="MultiToggle"
+				visibleRowCount="2"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">
+						<m:Title id="title" text="Products"/>
+                        <m:ToolbarSpacer id="_IDToolbarspacer"/>
+                        <m:Button id="_IDButtomAdd"
+                        text="Adicionar"
+                        type="Transparent"/>
+                        <m:Button id="_IDButtomDel"
+                        text="Deletar"
+                        type="Transparent"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column id="_IDGenColumn1" width="auto">
+						<m:Label id="_IDGenLabel1" text="{i18n>TravelID}" />
+						<template>
+							<m:Label id="_IDGenLabel01" text="{oModelList>TravelID}"/>
+						</template>
+					</Column>
+					<Column id="_IDGenColumn2" width="auto">
+						<m:Label id="_IDGenLabel2" text="{i18n>AgencyID}"/>
+						<template>
+							<m:Label id="_IDGenLabel02" text="{oModelList>AgencyID}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn3" width="auto">
+						<m:Label id="_IDGenLabel3" text="{i18n>AgencyName}" />
+						<template>
+							<m:Label id="_IDGenLabel03" text="{oModelList>AgencyName}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn4" width="auto">
+						<m:Label id="_IDGenLabel5" text="{i18n>CustomerID}" />
+						<template>
+							<m:Label id="_IDGenLabel04" text="{oModelList>CustomerID}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn5" width="auto">
+						<m:Label id="_IDGenLabel6" text="{i18n>CustomerName}"/>
+						<template>
+							<m:Label id="_IDGenLabel05" text="{oModelList>CustomerName}" />
+						</template>
+					</Column>
+					
+					<Column id="_IDGenColumn7" width="auto">
+						<m:Label id="_IDGenLabel8" text="{i18n>BeginDate}"/>
+						<template>
+							<m:Label id="_IDGenLabel06" text="{oModelList>BeginDate}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn8" width="auto">
+						<m:Label id="_IDGenLabel9" text="{i18n>EndDate}" />
+						<template>
+							<m:Label id="_IDGenLabel07" text="{oModelList>EndDate}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn9" width="auto">
+						<m:Label id="_IDGenLabel10" text="{i18n>TotalPrice}" />
+						<template>
+							<m:Label id="_IDGenLabel08" text="{oModelList>TotalPrice}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn10" width="auto">
+						<m:Label id="_IDGenLabel11" text="{i18n>CurrencyCode}" />
+						<template>
+							<m:Label id="_IDGenLabel09" text="{oModelList>CurrencyCode}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn11" width="auto">
+						<m:Label id="_IDGenLabel12" text="{i18n>TravelStatus}" />
+						<template>
+							<m:Label id="_IDGenLabel010" text="{oModelList>TravelStatus}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn12" width="auto" >
+						<m:Label id="_IDGenLabel13" text="{i18n>Description}" />
+						<template>
+							<m:Label id="_IDGenLabe" text="{oModelList>Description}" />
+						</template>
+					</Column>
+					<Column id="_IDGenColumn13" width="auto" >
+						<m:Label id="_IDGenLabel14" text="{i18n>LastChangedAt}" />
+						<template>
+							<m:Label id="_IDGenLabel4" text="{oModelList>LastChangedAt}" />
+						</template>
+					</Column>
+				</columns>
+			</Table>
 			</f:content>
 		</f:DynamicPage>
 </mvc:View>
