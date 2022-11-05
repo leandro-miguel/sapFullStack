@@ -1,0 +1,71 @@
+<core:FragmentDefinition 
+  xmlns="sap.m" 
+  xmlns:m="sap.m"
+  xmlns:core="sap.ui.core" 
+  xmlns:f="sap.f"
+  xmlns:a="sap.m"
+  xmlns:table="sap.ui.table">
+    <Dialog id="fragmentsTypeBitCalc" 
+    class="sapUiContentPadding" 
+    afterClose=".onValueHelpAfterCloseOC" 
+    verticalScrolling="false" 
+    horizontalScrolling="false"
+    resizable="true" 
+    draggable="true" 
+    contentWidth="35%" 
+    contentHeight="80%">
+        <f:DynamicPage id="fragmentsDyTypeBit">
+            <f:title>
+                <f:DynamicPageTitle id="fragmentsTypeBitPageDP" >
+                    <f:heading>
+                        <a:Title id="fragmentsTypeBitPageTitleImport"
+                            text="{i18n>Enterprises}"
+                            wrapping="true"
+                            width="70rem"
+                        />
+                    </f:heading>
+                </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader id="fragmentsTypeBitPageDPImport" >
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+                <table:Table
+                id="tableListTypeBit"
+                selectionBehavior="RowOnly"
+                enableBusyIndicator="true"
+                selectionMode="Single"
+                visibleRowCount="10"
+                ariaLabelledBy="title"
+                visibleRowCountMode="Auto"
+                cellClick="onClienteSubmit"
+                rows="{oModelMainService>/FiltroClienteSet}">
+                <table:extension>
+            </table:extension>
+                <table:columns >
+                    <table:Column id="tableListTypeBitColumsCode"
+                        autoResizable="true"
+                        width="10rem">
+                        <m:Label id="tableListTypeBitCode" text="{i18n>Customer}" />
+                        <table:template>
+                            <m:Text id="tableListTypeBitTextCode" text="{oModelMainService>IdCliente}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column id="tableListTypeBitColumsText"
+                        autoResizable="true"
+                        width="auto">
+                        <m:Label id="tableListTypeBitLabelText" text="{i18n>Description}" />
+                        <table:template>
+                            <m:Text id="tableListTypeBitText" text="{path: 'oModelMainService>NomeCliente'}" wrapping="true" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+            </f:content>
+        </f:DynamicPage>
+        <buttons>
+            <Button id="AgentCancelTypeBit" text="{i18n>exit}" press="onCretaeHelpClose" type="Ghost"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>  

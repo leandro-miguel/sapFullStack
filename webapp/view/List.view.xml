@@ -41,7 +41,8 @@
                         <m:ToolbarSpacer id="_IDToolbarspacer"/>
                         <m:Button id="_IDButtomAdd"
                         text="Adicionar"
-                        type="Transparent"/>
+                        type="Transparent"
+						press="_onCreate"/>
                         <m:Button id="_IDButtomDel"
                         text="Deletar"
                         type="Transparent"/>
