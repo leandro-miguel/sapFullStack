@@ -1,8 +1,10 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller", 
+	"sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment", 
 
 ], function(
 	Controller,
+    Fragment
 ) {
 	"use strict";
 
@@ -32,7 +34,6 @@ sap.ui.define([
         },
 
         openFragment(dialogName) {
-            debugger
 			if (!this[dialogName]) {
 				this[dialogName] = sap.ui.xmlfragment("project1fullstack.view.fragments." + dialogName, this);
 				this.getView().addDependent(this[dialogName]);
@@ -40,6 +41,10 @@ sap.ui.define([
 			}
 			this[dialogName].open();
 		},
+
+        closeFragment(dialogName){
+            this[dialogName].close();
+        }
 
 	});
 });

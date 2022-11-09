@@ -4,22 +4,24 @@
   xmlns:core="sap.ui.core" 
   xmlns:f="sap.f"
   xmlns:a="sap.m"
+  xmlns:layout="sap.ui.layout"
   xmlns:table="sap.ui.table">
-    <Dialog id="fragmentsTypeBitCalc" 
+    <Dialog id="_IDFragmentCreate" 
     class="sapUiContentPadding" 
     afterClose=".onValueHelpAfterCloseOC" 
     verticalScrolling="false" 
     horizontalScrolling="false"
     resizable="true" 
     draggable="true" 
-    contentWidth="35%" 
-    contentHeight="80%">
-        <f:DynamicPage id="fragmentsDyTypeBit">
+    contentWidth="50%" 
+    contentHeight="50%" 
+    >
+        <f:DynamicPage id="_IDFragmentCreateDynamicPage">
             <f:title>
-                <f:DynamicPageTitle id="fragmentsTypeBitPageDP" >
+                <f:DynamicPageTitle id="_IDFragmentCreateDynamicPageTitle" >
                     <f:heading>
-                        <a:Title id="fragmentsTypeBitPageTitleImport"
-                            text="{i18n>Enterprises}"
+                        <a:Title id="_IDFragmentCreateTitle"
+                            text="{i18n>create}"
                             wrapping="true"
                             width="70rem"
                         />
@@ -27,45 +29,43 @@
                 </f:DynamicPageTitle>
         </f:title>
         <f:header>
-            <f:DynamicPageHeader id="fragmentsTypeBitPageDPImport" >
+            <f:DynamicPageHeader id="_IDFragmentCreateDynamicHeader">
+
             </f:DynamicPageHeader>
         </f:header>
-        <f:content>
-                <table:Table
-                id="tableListTypeBit"
-                selectionBehavior="RowOnly"
-                enableBusyIndicator="true"
-                selectionMode="Single"
-                visibleRowCount="10"
-                ariaLabelledBy="title"
-                visibleRowCountMode="Auto"
-                cellClick="onClienteSubmit"
-                rows="{oModelMainService>/FiltroClienteSet}">
-                <table:extension>
-            </table:extension>
-                <table:columns >
-                    <table:Column id="tableListTypeBitColumsCode"
-                        autoResizable="true"
-                        width="10rem">
-                        <m:Label id="tableListTypeBitCode" text="{i18n>Customer}" />
-                        <table:template>
-                            <m:Text id="tableListTypeBitTextCode" text="{oModelMainService>IdCliente}" wrapping="false" />
-                        </table:template>
-                    </table:Column>
-                    <table:Column id="tableListTypeBitColumsText"
-                        autoResizable="true"
-                        width="auto">
-                        <m:Label id="tableListTypeBitLabelText" text="{i18n>Description}" />
-                        <table:template>
-                            <m:Text id="tableListTypeBitText" text="{path: 'oModelMainService>NomeCliente'}" wrapping="true" />
-                        </table:template>
-                    </table:Column>
-                </table:columns>
-            </table:Table>
+            <f:content>
+                <HBox id="_HBoxUser01" justifyContent="SpaceBetween" wrap="Wrap">
+                    <layout:HorizontalLayout id="_HorizontalLayoutUsers01" allowWrapping="true">
+                        <layout:VerticalLayout id="_VerticalLayoutUser01" class="sapUiMediumMarginBegin">
+                            <Label id="_LabelUser01" text="{i18n>Agency}" class="sapUiTinyMarginTop" required="true" />
+                            <Input id="_InputUser01" value="{path: 'oModelCreate>/agencyValue'}" valueState="{oModelCreate>/EmailState}" width="20rem" textAlign="Center" autocomplete="false" showClearIcon="true" showSuggestion="false" showValueHelp="true" valueHelpRequest=".onHelpDialogAgency"/>
+
+                            <Label id="_LabelUser10" text="{i18n>CNPJ}" class="sapUiLargeMarginTop" required="true"/>
+                            <Input width="20rem" id="CNPJ" value="{oModelCreate>/passengerValue}" valueState="{oModelCreate>/CnpjState}" showValueHelp="true" valueHelpRequest=".onHelpDialogPassenger"/>
+
+                            <Label id="_LabelUser02" text="{i18n>code}" class="sapUiLargeMarginTop" required="true"/>
+                            <Input id="_InputUser03" value="{oModelCreate>/codePartner}" width="20rem" textAlign="Center" showClearIcon="true" valueState="{oModelCreate>/codePartnerState}"/>
+
+                        </layout:VerticalLayout>
+                    </layout:HorizontalLayout>
+                    <layout:HorizontalLayout id="_HorizontalLayoutUsers02" allowWrapping="true">
+                        <layout:VerticalLayout id="_VerticalLayoutUser02" class="sapUiMediumMarginEnd">
+                            <Label id="_LabelUser14" text="{i18n>bairro}" class="sapUiTinyMarginTop" required="true" />
+                            <Input id="_InputUser14" value="{oModelCreate>/District}" width="20rem" textAlign="Center" showClearIcon="true" valueState="{oModelCreate>/DistrictState}"/>
+
+                            <Label id="_LabelUser15" text="{i18n>endereco}" class="sapUiLargeMarginTop" required="true" />
+                            <Input id="_InputUser15" value="{oModelCreate>/Address}" width="20rem" textAlign="Center" showClearIcon="true" valueState="{oModelCreate>/AddressState}"/>
+
+                            <Label id="_LabelUser16" text="{i18n>cep}" class="sapUiLargeMarginTop" required="true" />
+                            <MaskInput id="_InputUser16" value="{oModelCreate>/Postalcode}" mask="99999-999" placeholderSymbol="_" width="20rem"  valueState="{oModelCreate>/PostalcodeState}"/>
+                        </layout:VerticalLayout>
+                    </layout:HorizontalLayout>
+                </HBox>
             </f:content>
         </f:DynamicPage>
         <buttons>
-            <Button id="AgentCancelTypeBit" text="{i18n>exit}" press="onCretaeHelpClose" type="Ghost"/>
+            <Button id="_IDButtonSaveCreate" text="{i18n>save}" press="onSaveCreate" type="Emphasized"/>
+            <Button id="_IDButtonExitCreate" text="{i18n>exit}" press="onExitCreate" type="Ghost"/>
         </buttons>
     </Dialog>
 </core:FragmentDefinition>  

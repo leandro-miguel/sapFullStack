@@ -1,0 +1,71 @@
+<core:FragmentDefinition 
+  xmlns="sap.m" 
+  xmlns:m="sap.m"
+  xmlns:core="sap.ui.core" 
+  xmlns:f="sap.f"
+  xmlns:a="sap.m"
+  xmlns:table="sap.ui.table">
+    <Dialog id="fragmentAgency" 
+    class="sapUiContentPadding" 
+    afterClose=".onValueHelpAfterClose" 
+    verticalScrolling="false" 
+    horizontalScrolling="false"
+    resizable="true" 
+    draggable="true" 
+    contentWidth="35%" 
+    contentHeight="80%">
+        <f:DynamicPage id="_IDFragmentDynamicPageAgency">
+            <f:title>
+                <f:DynamicPageTitle id="_IDFragmentDynamicPageTitleAgency" >
+                    <f:heading>
+                        <a:Title id="_IDFragmentTitleAgency"
+                            text="{i18n>agency}"
+                            wrapping="true"
+                            width="70rem"
+                        />
+                    </f:heading>
+                </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader id="_IDFragmentDynamicPageHeaderAgency" >
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+                <table:Table
+                id="_IDTableAgency"
+                selectionBehavior="RowOnly"
+                enableBusyIndicator="true"
+                selectionMode="Single"
+                visibleRowCount="10"
+                ariaLabelledBy="title"
+                visibleRowCountMode="Auto"
+                cellClick="onClienteSubmit"
+                rows="{oModelMainService>/TravelAgencySet}">
+                <table:extension>
+            </table:extension>
+                <table:columns >
+                    <table:Column id="tableListAgrncyColumsCode"
+                        autoResizable="true"
+                        width="10rem">
+                        <m:Label id="tableListAgrncyCode" text="{i18n>Customer}" />
+                        <table:template>
+                            <m:Text id="tableListAgrncyTextCode" text="{oModelMainService>AgencyID}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column id="tableListAgrncyColumsText"
+                        autoResizable="true"
+                        width="auto">
+                        <m:Label id="tableListAgrncyLabelText" text="{i18n>Description}" />
+                        <table:template>
+                            <m:Text id="tableListAgrncyText" text="{path: 'oModelMainService>Name'}" wrapping="true" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+            </f:content>
+        </f:DynamicPage>
+        <buttons>
+            <Button id="AgentCancelAgrncy" text="{i18n>exit}" press="onExitAgency" type="Ghost"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>  

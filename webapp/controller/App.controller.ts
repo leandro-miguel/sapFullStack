@@ -1,4 +1,4 @@
-import Controller from "sap/ui/core/mvc/Controller";
+import Controller from "./BaseController";
 
 /**
  * @namespace project1fullstack.controller

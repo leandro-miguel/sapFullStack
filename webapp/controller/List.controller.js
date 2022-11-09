@@ -1,5 +1,6 @@
 sap.ui.define([
     "./BaseController",
+    "./Formatter",
     "../model/ListModel",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
@@ -9,10 +10,11 @@ sap.ui.define([
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (BaseController, ListModel, MessageBox) {
+    function (BaseController, Formatter, ListModel, MessageBox, Filter, FilterOperator) {
         "use strict";
 
         return BaseController.extend("project1fullstack.controller.List", {
+            formatter: Formatter,
             onInit: function () {
                 const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.getRoute("RouteList").attachPatternMatched(this._onSearch, this);
@@ -35,12 +37,34 @@ sap.ui.define([
                 }
             },
 
-            _onCreate(oEvent){
+            // --------------------------------------------
+            //
+            //  -------- Fragmentos -----------------------
+            //
+            //----------------------------------------------
+
+            _onCreate(){
                 this.openFragment("Create");
             },
 
-            onCretaeHelpClose() {
+            onExitCreate() {
                 this.Create.close();
+            },
+
+            onHelpDialogAgency(){
+                this.openFragment("Agency");
+            },
+
+            onExitAgency() {
+                this.Agency.close();
+            },
+
+            onHelpDialogPassenger(){
+                this.openFragment("Passenger");
+            },
+
+            onExitPassenger() {
+                this.Passenger.close();
             },
     
         });
