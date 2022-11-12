@@ -12,7 +12,7 @@ sap.ui.define([
      */
     function (BaseController, Formatter, ListModel, MessageBox, Filter, FilterOperator) {
         "use strict";
-
+        //TEste
         return BaseController.extend("project1fullstack.controller.List", {
             formatter: Formatter,
             onInit: function () {
