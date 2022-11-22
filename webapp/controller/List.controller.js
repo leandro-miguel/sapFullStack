@@ -16,6 +16,7 @@ sap.ui.define([
         return BaseController.extend("project1fullstack.controller.List", {
             formatter: Formatter,
             onInit: function () {
+                //teste
                 const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.getRoute("RouteList").attachPatternMatched(this._onSearch, this);
             },
