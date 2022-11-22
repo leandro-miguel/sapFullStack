@@ -33,7 +33,7 @@
 				<Table id="_IDGenTable1"
 				rows="{path: 'oModelList>/rows'}"
 				selectionMode="MultiToggle"
-				visibleRowCount="2"
+				visibleRowCount="{oModelList>/qtdRows}"
 				ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">

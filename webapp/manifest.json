@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZUI_C_TRAVEL_M_LP/",
+                "uri": "/sap/opu/odata/sap/ZPLP_SERVICEBINDING/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
