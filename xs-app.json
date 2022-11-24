@@ -5,7 +5,7 @@
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
-      "destination": "abap-cloud-abap-f1d830d5trial-dev",
+      "destination": "abap-cloud-abap-79790b8btrial-dev",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
